@@ -28,38 +28,19 @@ function applyGalleryFilter(category) {
   galleryFilters.querySelectorAll('button').forEach(btn => btn.classList.toggle('active', btn.dataset.filter === category));
   const visible = galleryItems.filter(card => !card.hidden).length;
   const empty = galleryGrid.querySelector('.gallery-empty');
-  if (!visible && !empty) { const p=document.createElement('p'); p.className='gallery-empty'; p.textContent=`No ${category === 'All' ? '' : category + ' '}photos added yet. Upload photos in Photo Admin under the same category.`; galleryGrid.append(p); }
+  if (!visible && !empty) { const p=document.createElement('p'); p.className='gallery-empty'; p.textContent=`No ${category === 'All' ? '' : category + ' '}photos yet. Please check back soon.`; galleryGrid.append(p); }
   else if (visible && empty) empty.remove();
-  else if (!visible && empty) empty.textContent=`No ${category === 'All' ? '' : category + ' '}photos added yet. Upload photos in Photo Admin under the same category.`;
+  else if (!visible && empty) empty.textContent=`No ${category === 'All' ? '' : category + ' '}photos yet. Please check back soon.`;
 }
 galleryFilters.addEventListener('click', e => { const btn=e.target.closest('button[data-filter]'); if(btn) applyGalleryFilter(btn.dataset.filter); });
 
-(async()=>{
-  // Folder-based public gallery: each JSON item must include file and category.
-  try {
-    const response = await fetch('images/gallery/photos.json');
-    if (response.ok) {
-      const items = await response.json();
-      items.forEach(item => addGalleryItem({src:`images/gallery/${item.file}`,name:item.name || item.file,category:item.category,alt:item.alt}));
-    }
-  } catch (e) { console.info('Folder gallery not available when opened directly from disk.', e); }
-  // Photos saved by Photo Admin in this browser. They remain local to this browser only.
-  try {
-    const req = indexedDB.open('StudioThapasGallery',1);
-    req.onupgradeneeded = () => { if(!req.result.objectStoreNames.contains('photos')) req.result.createObjectStore('photos',{keyPath:'id',autoIncrement:true}); };
-    req.onsuccess = () => {
-      const db=req.result;
-      if(!db.objectStoreNames.contains('photos')) { applyGalleryFilter(activeGalleryFilter); return; }
-      const r=db.transaction('photos','readonly').objectStore('photos').getAll();
-      r.onsuccess=()=>{
-        r.result.forEach(photo=>addGalleryItem({src:URL.createObjectURL(photo.blob),name:photo.name,category:photo.category,alt:`${photo.category} - ${photo.name}`}));
-        applyGalleryFilter(activeGalleryFilter);
-      };
-      r.onerror=()=>applyGalleryFilter(activeGalleryFilter);
-    };
-    req.onerror=()=>applyGalleryFilter(activeGalleryFilter);
-  } catch(e) { applyGalleryFilter(activeGalleryFilter); }
-})();
+// Public gallery: albums managed in the Photo Admin (/admin/) are stored in images/gallery/photos.json.
+fetch('images/gallery/photos.json', {cache: 'no-cache'})
+  .then(response => response.ok ? response.json() : [])
+  .then(albums => albums.forEach(album => (album.photos || []).forEach(src =>
+    addGalleryItem({src, name: album.title, category: album.category, alt: `${album.title} – ${album.category} photography by Studio Thapas`}))))
+  .catch(error => console.warn('Gallery could not be loaded.', error))
+  .finally(() => applyGalleryFilter(activeGalleryFilter));
 
 
 // Click any gallery photo to open a full-screen viewer with zoom controls.

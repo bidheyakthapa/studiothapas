@@ -1,56 +1,76 @@
-STUDIO THAPAS WEBSITE DEMO - VERSION 2
-======================================
+STUDIO THAPAS WEBSITE
+=====================
 
-HOW TO OPEN OFFLINE
-1. Download this ZIP file.
-2. Right-click the ZIP and choose Extract All.
-3. Open the extracted studio_thapas_website folder.
-4. Double-click index.html to view the website in your browser. For folder-manifest photos, open the folder with VS Code and use the Live Server extension; browsers may block local JSON loading from file:// pages.
-5. An internet connection is needed for the online sample photos and Google Fonts. The page layout itself opens offline.
+Live site:   https://studiothapas.netlify.app/
+Photo admin: https://studiothapas.netlify.app/admin/
+Repository:  https://github.com/bidheyakthapa/studiothapas (branch: main)
 
-WHAT IS INCLUDED
-- Premium black and gold Studio Thapas website design.
-- Photography, wedding, cinematography, video production, printing, frames and creative service sections.
-- Five wedding package cards with Studio Thapas prices: Basic Rs. 30,000; Elite Rs. 35,000; Luxury Rs. 45,000; Premium Rs. 80,000; Diamond Rs. 1,20,000.
-- WhatsApp enquiry form with service and package selection.
-- Responsive layout for desktop and mobile.
-- Photo Admin page for saving selected photos in the same browser on the same computer.
-- Folder-based gallery manifest at images/gallery/photos.json.
+Plain HTML/CSS/JS, no build step. Netlify redeploys automatically on every push to main.
 
-ADD PHOTOS USING THE ADMIN PAGE
-1. Open index.html in your browser.
-2. Click Photo Admin in the top menu (or open admin.html).
-3. Choose photos and a category, then click Save to this browser.
-4. Open the website in the same browser on the same computer. Those locally saved photos can be displayed from that browser's local storage.
 
-IMPORTANT ABOUT ADMIN UPLOADS
-The Admin page in this demo stores photos in the browser on your computer only. It is NOT a secure login system and does NOT upload photos to hosting or make them visible to other visitors. To publish photos for all website visitors, upload them to the website hosting and add entries to images/gallery/photos.json, or later connect a proper server/database and secure admin login.
+ADDING PHOTOS (PHOTO ADMIN)
+1. Open /admin/ and click "Sign In with GitHub".
+   Only GitHub accounts with write access to the repository can sign in.
+   To give someone access: GitHub repo > Settings > Collaborators > Add people.
+2. Gallery > New Album. Enter a title (used as the photo caption), choose a
+   category and add one or more photos (you can select many at once).
+3. Click Save. The CMS commits the photos and images/gallery/photos.json to
+   GitHub, and the live site updates in about a minute.
+4. Drag albums in the list to change their order on the website.
+   Delete an album to remove it from the website.
+5. To remove one photo: open the album, click Remove under that photo, Save.
+   The file itself stays in the repository. To delete unused files for good,
+   open the Asset Library (image icon, top left), tick the file and click
+   Delete. Only delete files that are no longer in any album.
 
-ADD PHOTOS THROUGH THE WEBSITE FOLDER
-1. Copy your photo files into images/gallery/.
-2. Open images/gallery/photos.json in Notepad or VS Code.
-3. Add entries like this (use your exact file names):
-   [
-     {"file":"wedding-01.jpg","alt":"Studio Thapas wedding photography","category":"Wedding"},
-     {"file":"maternity-01.jpg","alt":"Studio Thapas maternity photography","category":"Maternity"}
-   ]
-4. Save photos.json and refresh index.html.
+Photo quality: uploads are converted in the browser to WebP at quality 90,
+with the long edge capped at 2560px (smaller photos are never enlarged).
+Camera EXIF/GPS data is removed. Upload your normal sRGB web exports.
+
+Categories in the admin must match the gallery filter buttons in index.html.
+To add a category, add it in both places: the filter buttons in index.html
+and the category options in admin/config.yml.
+
+
+ONE-TIME LOGIN SETUP (ALREADY DONE ONCE, KEEP FOR REFERENCE)
+1. GitHub > Settings > Developer settings > OAuth Apps > New OAuth App.
+   Application name: Studio Thapas Admin
+   Homepage URL: https://studiothapas.netlify.app
+   Redirect URI (older form: "Authorization callback URL"):
+     https://api.netlify.com/auth/done
+   Leave "Allow wildcard matching" and "Enable Device Flow" unticked.
+   Untick "Expire user access tokens" (Netlify's login does not refresh
+   tokens, so the admin would sign you out every 8 hours).
+2. Copy the Client ID and generate a Client Secret.
+3. Netlify > Project configuration > Security > OAuth > Install provider >
+   GitHub, paste the Client ID and Secret.
+
+
+FILES
+- index.html, style.css, script.js   The website.
+- images/gallery/photos.json         Gallery data (written by the admin).
+- images/gallery/                    Gallery photos (uploaded by the admin).
+- admin/index.html, admin/config.yml The Photo Admin (Sveltia CMS).
+
+photos.json format (one object per album):
+  [
+    {
+      "title": "Sita & Ram Wedding",
+      "category": "Wedding",
+      "photos": ["/images/gallery/img-0001-3f9a2c1b7d4e.webp"]
+    }
+  ]
+
+To preview locally, serve the folder over HTTP (e.g. VS Code Live Server or
+`python3 -m http.server`); browsers block photos.json when opening the file directly.
+
 
 IMPORTANT
-- Current gallery photos are demo/sample images. Replace them with Studio Thapas original photographs before publishing.
-- Wedding package inclusions are indicative website copy only. Confirm the exact number of event days, crew, deliverables, album details and extras in a written quotation before accepting bookings.
-- This is a front-end demo. It does not include a live booking calendar, payment gateway, server database, cloud photo uploads or secure staff/admin authentication.
-- Domain and hosting are not included. This demo can be previewed locally before publishing.
+- Service-section images are sample photos from Unsplash. Replace them with
+  Studio Thapas originals.
+- Wedding package inclusions are indicative website copy only. Confirm event
+  days, crew, deliverables, album details and extras in a written quotation.
+- The enquiry form opens WhatsApp; it does not store submissions.
 
 Business contact: +977 9841419161
 Website: https://weddingthapas.com
-
-
-GALLERY UPDATE (V2.1)
-- Gallery photos are grouped by category: Wedding, Pre-wedding, Maternity, Newborn, Family, Graduation, Portrait, Product, Corporate, Event, Photo Printing and Other.
-- Use the filter buttons on the Gallery section to show one category only.
-- Portrait and landscape photos keep their original aspect ratio. The gallery uses a masonry layout and does not crop the image.
-- In Photo Admin, choose the correct category before saving photos. A Wedding photo saved under Wedding will not appear in Graduation.
-- For public website gallery photos, put image files in images/gallery/ and add records to images/gallery/photos.json, for example:
-  [{"file":"wedding-01.jpg","name":"Wedding Story 01","category":"Wedding","alt":"Wedding photography"}]
-- The offline Admin upload uses this browser's local storage and is not automatically published to hosting.

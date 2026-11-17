@@ -1,0 +1,55 @@
+# Studio Thapas photo admin (Sveltia CMS), opened at /admin/
+# Sign-in is "Sign in with GitHub" through Netlify. Only GitHub users with write
+# access to the repository can sign in. Every save is a commit to `main`, and
+# Netlify redeploys the site automatically (about a minute).
+
+backend:
+  name: github
+  repo: bidheyakthapa/studiothapas
+  branch: main
+
+site_url: https://studiothapas.netlify.app
+
+media_folder: /images/gallery
+public_folder: /images/gallery
+
+media_libraries:
+  default:
+    config:
+      # Photos are converted in the browser before upload: WebP at quality 90,
+      # long edge capped at 2560px (never upscaled), EXIF/GPS data stripped.
+      transformations:
+        raster_image:
+          format: webp
+          quality: 90
+          width: 2560
+          height: 2560
+      # Camera names repeat (IMG_0001.jpg), so add a short unique suffix.
+      filename_template: '{{filename}}-{{uuid_short}}'
+      slugify_filename: true
+
+collections:
+  - name: gallery
+    label: Gallery
+    label_singular: Album
+    description: Each album appears in the website gallery under its category. Drag albums to change their order on the website.
+    file: /images/gallery/photos.json
+    identifier_field: title
+    summary: '{{title}} · {{category}}'
+    editor:
+      preview: false
+    fields:
+      - name: title
+        label: Title
+        hint: Shown as the photo caption, e.g. "Sita & Ram Wedding".
+      - name: category
+        label: Category
+        widget: select
+        # Must match the filter buttons in index.html.
+        options: [Wedding, Pre-wedding, Maternity, Newborn, Family, Graduation, Portrait, Product, Other]
+      - name: photos
+        label: Photos
+        widget: image
+        multiple: true
+        min: 1
+        hint: Select or drag in several photos at once. Upload full-quality JPEGs; they are optimised automatically.
