@@ -1,55 +1,195 @@
-# Studio Thapas photo admin (Sveltia CMS), opened at /admin/
-# Sign-in is "Sign in with GitHub" through Netlify. Only GitHub users with write
-# access to the repository can sign in. Every save is a commit to `main`, and
-# Netlify redeploys the site automatically (about a minute).
+# Studio Thapas website admin (Sveltia CMS), opened at /admin/
+# Sign-in is "Sign in with GitHub". Only GitHub users with write access to the
+# repository can sign in. Every save is a commit to `main`, and the host
+# redeploys the site automatically.
 
 backend:
   name: github
   repo: bidheyakthapa/studiothapas
   branch: main
+  # After the move to Cloudflare, sign-in goes through the Sveltia CMS Authenticator:
+  # base_url: https://sveltia-cms-auth.<subdomain>.workers.dev
 
-site_url: https://studiothapas.netlify.app
+site_url: https://studiothapas.com.np
 
 media_folder: /images/gallery
 public_folder: /images/gallery
 
 media_libraries:
-  default:
-    config:
-      # Photos are converted in the browser before upload: WebP at quality 90,
-      # long edge capped at 2560px (never upscaled), EXIF/GPS data stripped.
-      transformations:
-        raster_image:
-          format: webp
-          quality: 90
-          width: 2560
-          height: 2560
-      # Camera names repeat (IMG_0001.jpg), so add a short unique suffix.
-      filename_template: '{{filename}}-{{uuid_short}}'
-      slugify_filename: true
+  # `all` applies to every storage location (the repository now, Cloudflare R2 later).
+  all:
+    # Photos are converted in the browser before upload: WebP at quality 92,
+    # long edge capped at 4096px (never upscaled), EXIF/GPS data stripped.
+    transformations:
+      raster_image:
+        format: webp
+        quality: 92
+        width: 4096
+        height: 4096
+    # Camera names repeat (IMG_0001.jpg), so add a short unique suffix.
+    filename_template: '{{filename}}-{{uuid_short}}'
+    slugify_filename: true
+  # Cloudflare R2 photo storage, added after the move to Cloudflare (see README):
+  # cloudflare_r2:
+  #   access_key_id: <R2 Access Key ID>
+  #   bucket: studiothapas-photos
+  #   account_id: <Cloudflare account ID>
+  #   public_url: https://photos.studiothapas.com.np
 
-collections:
-  - name: gallery
-    label: Gallery
-    label_singular: Album
-    description: Each album appears in the website gallery under its category. Drag albums to change their order on the website.
-    file: /images/gallery/photos.json
-    identifier_field: title
-    summary: '{{title}} · {{category}}'
+singletons:
+  - name: home
+    label: Home Page
+    icon: home
+    file: /content/home.json
     editor:
       preview: false
     fields:
-      - name: title
-        label: Title
-        hint: Shown as the photo caption, e.g. "Sita & Ram Wedding".
-      - name: category
-        label: Category
-        widget: select
-        # Must match the filter buttons in index.html.
-        options: [Wedding, Pre-wedding, Maternity, Newborn, Family, Graduation, Portrait, Product, Other]
+      - name: hero
+        label: Hero (top of the home page)
+        widget: object
+        fields:
+          - { name: eyebrow, label: Small line above the heading }
+          - { name: title, label: Heading }
+          - { name: title_emphasis, label: Heading (gold italic second line) }
+          - { name: text, label: Intro text, widget: text }
+          - name: images
+            label: Hero photos
+            widget: image
+            multiple: true
+            min: 1
+            hint: At least one photo. With two or more, they fade from one to the next. Landscape photos work best.
+      - name: services_note
+        label: '"Also available" note under the services'
+        widget: text
+        required: false
+      - name: packages_intro
+        label: Packages section intro
+        widget: text
+        required: false
+      - name: packages_note
+        label: Note under the packages
+        widget: text
+        required: false
+
+  - name: settings
+    label: Contact & Social Links
+    icon: contact_phone
+    file: /content/settings.json
+    editor:
+      preview: false
+    fields:
+      - { name: phone, label: Phone number (as shown), hint: 'e.g. +977 9841419161' }
+      - name: whatsapp
+        label: WhatsApp number (digits only, with country code)
+        hint: 'e.g. 9779841419161. Enquiries from the website open WhatsApp to this number.'
+        pattern: ['^[0-9]{8,15}$', 'Digits only, including the country code, e.g. 9779841419161']
+      - { name: address, label: Address, widget: text }
+      - { name: hours, label: Opening hours }
+      - name: socials
+        label: Social & other links
+        label_singular: Link
+        widget: list
+        summary: '{{label}}'
+        hint: Shown in the footer. They open in a new tab.
+        fields:
+          - { name: label, label: Name, hint: 'e.g. Instagram' }
+          - { name: url, label: Full link, hint: 'e.g. https://www.instagram.com/studiothapasphotography/' }
+
+collections:
+  - name: services
+    label: Services
+    label_singular: Service
+    description: Each service gets its own page with its photos and packages. Drag to change the order on the website.
+    icon: photo_camera
+    file: /content/services.json
+    identifier_field: title
+    summary: '{{title}}'
+    editor:
+      preview: false
+    fields:
+      - { name: title, label: Name, hint: 'e.g. Wedding & Event Photography' }
+      - name: id
+        label: Page address
+        hint: 'Lowercase words and dashes, e.g. wedding → studiothapas.com.np/service/?s=wedding. Set it once; changing it later unlinks this service''s albums and packages.'
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Use lowercase letters, numbers and dashes only, e.g. wedding-films']
+      - { name: short_name, label: Short name, hint: 'Used on gallery filter buttons, e.g. Wedding' }
+      - { name: tagline, label: Small label, hint: 'Shown above the name, e.g. Celebrations' }
+      - { name: summary, label: Short description, widget: text, hint: One or two sentences for the service card. }
+      - { name: cover, label: Cover photo, widget: image }
+      - name: description
+        label: Full description
+        widget: text
+        hint: Shown on the service page. Leave an empty line between paragraphs.
+      - name: highlights
+        label: What's included
+        label_singular: Item
+        widget: list
+        required: false
+        field: { name: item, label: Item, widget: string }
+
+  - name: gallery
+    label: Gallery Albums
+    label_singular: Album
+    description: Each album appears in the gallery and on its service's page. Newest albums (by date) show first.
+    icon: photo_library
+    file: /content/gallery.json
+    identifier_field: title
+    summary: '{{title}} · {{date}}'
+    sortable_fields:
+      fields: [date, title]
+      default:
+        field: date
+        direction: descending
+    editor:
+      preview: false
+    fields:
+      - { name: title, label: Title, hint: 'Shown as the photo caption, e.g. "Sita & Ram Wedding".' }
+      - name: service
+        label: Service
+        widget: relation
+        collection: services
+        value_field: id
+        display_fields: [title]
+        search_fields: [title, short_name]
+      - name: date
+        label: Date
+        widget: datetime
+        type: date
+        default: '{{now}}'
+        hint: Newer albums appear first on the website.
       - name: photos
         label: Photos
         widget: image
         multiple: true
         min: 1
-        hint: Select or drag in several photos at once. Upload full-quality JPEGs; they are optimised automatically.
+        hint: Select or drag in several photos at once. Upload camera or Lightroom exports (not photos sent through WhatsApp, which are compressed). Drag to reorder.
+
+  - name: packages
+    label: Packages
+    label_singular: Package
+    description: Shown in the Packages section of the home page, and on the linked service's page. Drag to change the order.
+    icon: sell
+    file: /content/packages.json
+    identifier_field: name
+    summary: '{{name}} · {{price}}'
+    editor:
+      preview: false
+    fields:
+      - { name: name, label: Package name, hint: 'e.g. Luxury' }
+      - { name: label, label: Small label, hint: 'Shown above the name, e.g. Signature' }
+      - { name: price, label: Price, hint: 'Written as it should appear, e.g. रु. 45,000' }
+      - { name: summary, label: Short description, widget: text }
+      - name: features
+        label: What's included
+        label_singular: Item
+        widget: list
+        field: { name: item, label: Item, widget: string }
+      - { name: featured, label: Highlight as "Popular choice", widget: boolean, default: false }
+      - name: service
+        label: Show on this service's page too
+        widget: relation
+        collection: services
+        value_field: id
+        display_fields: [title]
+        search_fields: [title, short_name]
+        required: false

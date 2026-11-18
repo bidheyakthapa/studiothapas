@@ -1,76 +1,115 @@
 STUDIO THAPAS WEBSITE
 =====================
 
-Live site:   https://studiothapas.netlify.app/
-Photo admin: https://studiothapas.netlify.app/admin/
+Live site:   https://studiothapas.com.np/
+Admin:       https://studiothapas.com.np/admin/
 Repository:  https://github.com/bidheyakthapa/studiothapas (branch: main)
 
-Plain HTML/CSS/JS, no build step. Netlify redeploys automatically on every push to main.
+Plain HTML/CSS/JS with no build step. Every save in the admin is a commit to
+`main`, and the host redeploys the site automatically (about a minute).
 
 
-ADDING PHOTOS (PHOTO ADMIN)
-1. Open /admin/ and click "Sign In with GitHub".
-   Only GitHub accounts with write access to the repository can sign in.
-   To give someone access: GitHub repo > Settings > Collaborators > Add people.
-2. Gallery > New Album. Enter a title (used as the photo caption), choose a
-   category and add one or more photos (you can select many at once).
-3. Click Save. The CMS commits the photos and images/gallery/photos.json to
-   GitHub, and the live site updates in about a minute.
-4. Drag albums in the list to change their order on the website.
-   Delete an album to remove it from the website.
-5. To remove one photo: open the album, click Remove under that photo, Save.
-   The file itself stays in the repository. To delete unused files for good,
-   open the Asset Library (image icon, top left), tick the file and click
-   Delete. Only delete files that are no longer in any album.
-
-Photo quality: uploads are converted in the browser to WebP at quality 90,
-with the long edge capped at 2560px (smaller photos are never enlarged).
-Camera EXIF/GPS data is removed. Upload your normal sRGB web exports.
-
-Categories in the admin must match the gallery filter buttons in index.html.
-To add a category, add it in both places: the filter buttons in index.html
-and the category options in admin/config.yml.
+PAGES
+- /                       Home: hero, services, packages, gallery preview, contact
+- /service/?s=<address>   One page per service: description, packages, photos, related services
+- /gallery/               Full gallery with filters and pagination (?service=<address>&page=2)
+- /404.html               Not-found page
 
 
-ONE-TIME LOGIN SETUP (ALREADY DONE ONCE, KEEP FOR REFERENCE)
-1. GitHub > Settings > Developer settings > OAuth Apps > New OAuth App.
-   Application name: Studio Thapas Admin
-   Homepage URL: https://studiothapas.netlify.app
-   Redirect URI (older form: "Authorization callback URL"):
-     https://api.netlify.com/auth/done
-   Leave "Allow wildcard matching" and "Enable Device Flow" unticked.
-   Untick "Expire user access tokens" (Netlify's login does not refresh
-   tokens, so the admin would sign you out every 8 hours).
-2. Copy the Client ID and generate a Client Secret.
-3. Netlify > Project configuration > Security > OAuth > Install provider >
-   GitHub, paste the Client ID and Secret.
+USING THE ADMIN (/admin/)
+Sign in with GitHub. Only GitHub accounts with write access to the repository
+can sign in (GitHub repo > Settings > Collaborators > Add people).
+
+Home Page
+  Hero heading, intro text and hero photos (at least one; with two or more
+  they fade from one to the next), the "Also available" note, and the
+  packages intro and note.
+
+Contact & Social Links
+  Phone, WhatsApp number (enquiries open WhatsApp to it), address, opening
+  hours and the footer links (Facebook, Instagram, ...). Links open in a new tab.
+
+Services
+  Add, edit, remove and drag to reorder. Each service has a name, a page
+  address (e.g. "wedding"; set it once, because albums and packages are
+  linked to it), a short name for the gallery buttons, a small label, a short
+  description, a cover photo, a full description and "What's included".
+
+Gallery Albums
+  New Album > title (the caption), service, date, photos (select many at
+  once; drag to reorder). Newest albums (by date) appear first. To remove a
+  single photo: open the album, click Remove under it, Save. To remove the
+  file for good, delete it in the Asset Library (image icon, top left), but
+  only if it is not used in any album.
+
+Packages
+  Add, edit, remove and drag to reorder. Optionally link a package to a
+  service so it also appears on that service's page. "Highlight as Popular
+  choice" adds the gold tag.
+
+Photo quality: uploads are converted in the browser to WebP at quality 92,
+long edge up to 4096px (smaller photos are never enlarged), and camera
+EXIF/GPS data is removed. Upload camera or Lightroom exports in sRGB. Do not
+upload photos that were sent through WhatsApp or Messenger: those apps shrink
+them (WhatsApp to 1600px), and the website cannot restore the lost detail.
+
+
+MOVING TO CLOUDFLARE (one-time setup, all on the free plan)
+Why: Netlify's free plan is 300 credits/month (each deploy 15, each GB of
+traffic 20) and can pause the site. Cloudflare Pages has unlimited traffic and
+500 deploys/month; R2 stores 10 GB of photos free with free traffic.
+
+ 1. Create a Cloudflare account. Add the site studiothapas.com.np (Free plan).
+    Cloudflare shows two nameservers. Do NOT change them yet.
+ 2. Workers & Pages > Create > Pages > Connect to Git > choose the
+    bidheyakthapa/studiothapas repository.
+    Production branch: main. Framework preset: None.
+    Build command: exit 0. Build output directory: /
+    Deploy. It gets a studiothapas.pages.dev address; check that it works.
+ 3. At register.com.np, replace the Netlify nameservers with Cloudflare's two.
+    Wait until Cloudflare shows the site as Active (hours to ~2 days).
+ 4. Pages project > Custom domains > add studiothapas.com.np and
+    www.studiothapas.com.np. Cloudflare creates the DNS records and HTTPS.
+ 5. R2 > Create bucket "studiothapas-photos" (R2 may ask for a card even on the
+    free plan; nothing is charged under 10 GB).
+    Bucket > Settings > Custom Domains > add photos.studiothapas.com.np.
+    Bucket > Settings > CORS policy > paste:
+      [{"AllowedOrigins":["https://studiothapas.com.np","https://www.studiothapas.com.np"],
+        "AllowedMethods":["GET","PUT","DELETE","HEAD"],"AllowedHeaders":["*"],
+        "ExposeHeaders":["ETag"],"MaxAgeSeconds":3000}]
+    R2 > Manage API tokens > Create API token > "Object Read & Write",
+    only this bucket. Keep the Access Key ID and Secret Access Key.
+ 6. Images > Transformations > enable for studiothapas.com.np (free: 5,000
+    new thumbnails a month; if exceeded, the site shows the full photo instead).
+ 7. Admin sign-in: deploy the Sveltia CMS Authenticator to Workers
+    (https://github.com/sveltia/sveltia-cms-auth, "Deploy to Cloudflare Workers"),
+    register its GitHub App (Redirect URI: <worker URL>/callback), install the
+    app on the studiothapas repository, and set the Worker variables
+    GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET (as a secret) and
+    ALLOWED_DOMAINS = studiothapas.com.np, www.studiothapas.com.np
+ 8. Then update the code (admin/config.yml: `base_url` and the `cloudflare_r2`
+    block with the account ID, bucket and Access Key ID; script.js:
+    CLOUDFLARE_IMAGES = true). The Secret Access Key is never put in the
+    code: the admin asks for it once per browser.
+ 9. When everything works on Cloudflare, delete the Netlify site.
 
 
 FILES
-- index.html, style.css, script.js   The website.
-- images/gallery/photos.json         Gallery data (written by the admin).
-- images/gallery/                    Gallery photos (uploaded by the admin).
-- admin/index.html, admin/config.yml The Photo Admin (Sveltia CMS).
+- index.html, service/index.html, gallery/index.html, 404.html   Pages
+- style.css, script.js                                           Design and behaviour
+- content/home.json, settings.json, services.json,
+  gallery.json, packages.json                                    Content (written by the admin)
+- images/gallery/                                                Photos uploaded so far
+- admin/index.html, admin/config.yml                             The admin (Sveltia CMS 0.256.1, pinned)
+- favicon.svg, favicon.ico, apple-touch-icon.png                 Browser and phone icons
 
-photos.json format (one object per album):
-  [
-    {
-      "title": "Sita & Ram Wedding",
-      "category": "Wedding",
-      "photos": ["/images/gallery/img-0001-3f9a2c1b7d4e.webp"]
-    }
-  ]
-
-To preview locally, serve the folder over HTTP (e.g. VS Code Live Server or
-`python3 -m http.server`); browsers block photos.json when opening the file directly.
+To preview locally, serve this folder over HTTP, e.g. `python3 -m http.server`,
+then open http://localhost:8000/ (opening index.html directly will not load content).
 
 
 IMPORTANT
-- Service-section images are sample photos from Unsplash. Replace them with
-  Studio Thapas originals.
+- Service cover photos and the wedding feature photo are Unsplash samples.
+  Replace them with Studio Thapas originals in the admin.
 - Wedding package inclusions are indicative website copy only. Confirm event
   days, crew, deliverables, album details and extras in a written quotation.
 - The enquiry form opens WhatsApp; it does not store submissions.
-
-Business contact: +977 9841419161
-Website: https://weddingthapas.com

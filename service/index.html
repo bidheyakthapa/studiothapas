@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Studio Thapas</title>
+  <meta name="description" content="Studio Thapas services in Kathmandu: photography, films, printing and more.">
+  <meta name="theme-color" content="#101010">
+  <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="service">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="siteHeader">
+  <a class="brand" href="/"><span class="brand-mark">ST</span><span>STUDIO <b>THAPAS</b><small>PHOTOGRAPHY • CINEMATOGRAPHY • PRINTING</small></span></a>
+  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav"><span></span><span></span><span></span></button>
+  <nav class="nav" id="siteNav" aria-label="Main">
+    <a href="/" data-section="home">Home</a><a href="/#services" data-section="services">Services</a><a href="/#weddings" data-section="weddings">Wedding</a><a href="/#packages" data-section="packages">Packages</a><a href="/gallery/" data-section="gallery">Gallery</a><a href="/#printing" data-section="printing">Printing</a><a href="/#contact" data-section="contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="svc-hero" id="svcHero">
+  <div class="svc-hero-media" id="svcHeroMedia"></div>
+  <div class="hero-shade"></div>
+  <div class="svc-hero-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/#services">Services</a><span>/</span><b id="svcCrumb"></b></nav>
+    <p class="eyebrow" id="svcEyebrow"></p>
+    <h1 id="svcTitle"></h1>
+    <p class="hero-copy" id="svcSummary"></p>
+    <div class="hero-actions"><a class="btn gold" id="svcBook" href="/#contact">Book This Service</a><a class="btn outline" href="#work">See Our Work</a></div>
+  </div>
+</section>
+
+<section class="section svc-body" id="svcBody">
+  <div class="svc-description reveal" id="svcDescription"></div>
+  <aside class="svc-aside reveal" id="svcAside">
+    <h2 class="svc-aside-title">What's included</h2>
+    <ul class="check-list" id="svcHighlights"></ul>
+    <a class="btn gold full" id="svcWhatsapp" href="#" target="_blank" rel="noopener noreferrer">Ask on WhatsApp ↗</a>
+    <a class="btn dark-outline full" id="svcEnquire" href="/#contact">Send an Enquiry</a>
+  </aside>
+</section>
+
+<section class="section packages-section" id="svcPackages" hidden>
+  <div class="section-heading reveal"><div><p class="eyebrow">COLLECTIONS</p><h2>Choose your <em>package</em></h2></div><p>Ask us to customise coverage for your date and event plan.</p></div>
+  <div class="package-grid" id="svcPackageGrid"></div>
+</section>
+
+<section class="section gallery-section" id="work">
+  <div class="section-heading reveal"><div><p class="eyebrow" id="workEyebrow">OUR WORK</p><h2 id="workTitle">Recent <em>photographs</em></h2></div><p id="workInfo"></p></div>
+  <div class="gallery-grid" id="svcGrid" aria-live="polite"></div>
+  <nav class="pagination" id="svcPagination" aria-label="Photo pages"></nav>
+</section>
+
+<section class="section dark-section" id="related">
+  <div class="section-heading reveal"><div><p class="eyebrow">KEEP EXPLORING</p><h2>You may <em>also like</em></h2></div><a class="text-link light" href="/#services">VIEW ALL SERVICES <span class="arrow">→</span></a></div>
+  <div class="service-grid" id="relatedGrid"></div>
+</section>
+
+<section class="cta-band">
+  <div class="reveal"><p class="eyebrow dark">LET'S TALK</p><h2>Ready to make <em>memories?</em></h2><p>Tell us your date and plans. We usually reply the same day.</p></div>
+  <div class="button-row reveal"><a class="btn ink" id="ctaBook" href="/#contact">Send an Enquiry</a><a class="btn ink-outline" id="ctaWhatsapp" href="#" target="_blank" rel="noopener noreferrer">WhatsApp Us ↗</a></div>
+</section>
+
+<section class="section not-found" id="svcMissing" hidden>
+  <p class="eyebrow">SERVICE NOT FOUND</p><h1>We couldn't find <em>that service.</em></h1><p>It may have been renamed or removed. Have a look at everything we offer instead.</p>
+  <a class="btn gold" href="/#services">View All Services</a>
+</section>
+</main>
+
+<footer class="site-footer" id="siteFooter"></footer>
+<script src="/script.js"></script>
+</body>
+</html>

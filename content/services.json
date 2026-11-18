@@ -1,0 +1,144 @@
+[
+  {
+    "id": "wedding",
+    "title": "Wedding & Event Photography",
+    "short_name": "Wedding",
+    "tagline": "Celebrations",
+    "summary": "Traditional and candid wedding coverage, pre-wedding, engagement, mehendi, haldi, reception and family events.",
+    "cover": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85",
+    "description": "Your wedding is made of hundreds of small moments: the rituals, the laughter, the quiet glances and the people who travelled to be there. We photograph all of it, combining traditional coverage of every ceremony with candid storytelling that feels natural.\n\nFrom pre-wedding and engagement shoots to mehendi, haldi, the wedding day and the reception, we plan the coverage around your events so nothing important is missed.",
+    "highlights": [
+      "Traditional and candid wedding photography",
+      "Pre-wedding and engagement shoots",
+      "Mehendi, haldi and reception coverage",
+      "Family events and celebrations",
+      "Wedding albums and custom frames"
+    ]
+  },
+  {
+    "id": "cinematography",
+    "title": "Cinematography & Video Production",
+    "short_name": "Films",
+    "tagline": "Film & Video",
+    "summary": "Wedding highlight films, full event videos, music videos, commercials, corporate films and social reels.",
+    "cover": "https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1600&q=85",
+    "description": "Some memories need movement and sound. Our film team creates cinematic wedding highlights, complete event videos and creative productions that you will want to watch again and again.\n\nWe also produce music videos, commercials, corporate films and short reels for social media, handling everything from planning to the final edit.",
+    "highlights": [
+      "Wedding highlight films",
+      "Full event videos",
+      "Music videos and commercials",
+      "Corporate films",
+      "Social media reels"
+    ]
+  },
+  {
+    "id": "newborn-maternity",
+    "title": "Newborn, Baby & Maternity",
+    "short_name": "Newborn & Maternity",
+    "tagline": "Little Miracles",
+    "summary": "Newborn portraits, baby milestones, kids sessions and elegant maternity photography.",
+    "cover": "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1600&q=85",
+    "description": "The early days pass quickly. We create calm, comfortable sessions for expecting parents, newborns and little ones, so you can look back on these moments for years to come.\n\nSessions are relaxed and paced around your baby, with elegant maternity portraits, newborn photographs and milestone sessions as your child grows.",
+    "highlights": [
+      "Maternity photography",
+      "Newborn portraits",
+      "Baby milestone sessions",
+      "Kids sessions"
+    ]
+  },
+  {
+    "id": "family-portraits",
+    "title": "Family, Couple & Portraits",
+    "short_name": "Family & Portraits",
+    "tagline": "Together",
+    "summary": "Family sessions, couple portraits, professional headshots, modeling portfolios and studio portraits.",
+    "cover": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1600&q=85",
+    "description": "Whether it is the whole family together, a couple celebrating a milestone or a portrait for your career, we help you feel at ease in front of the camera.\n\nChoose a studio session or an outdoor location for family portraits, couple photos, professional headshots and modeling portfolios.",
+    "highlights": [
+      "Family sessions",
+      "Couple portraits",
+      "Professional headshots",
+      "Modeling portfolios",
+      "Studio portraits"
+    ]
+  },
+  {
+    "id": "graduation",
+    "title": "Graduation & Institutional",
+    "short_name": "Graduation",
+    "tagline": "Achievement",
+    "summary": "Graduation portraits, group photos, Montessori graduation, school events and graduation framing packages.",
+    "cover": "https://images.unsplash.com/photo-1627556704283-452301a45fd0?auto=format&fit=crop&w=1600&q=85",
+    "description": "Graduation is a proud moment for students and families alike. We photograph individual graduation portraits, class and group photos, and the ceremony itself.\n\nWe also work with schools and institutions on Montessori graduations, school events and graduation framing packages.",
+    "highlights": [
+      "Graduation portraits",
+      "Group and class photos",
+      "Montessori graduation",
+      "School events",
+      "Graduation framing packages"
+    ]
+  },
+  {
+    "id": "product-corporate",
+    "title": "Product & Corporate Photography",
+    "short_name": "Product & Corporate",
+    "tagline": "For Business",
+    "summary": "Product catalogues, business portraits, corporate events, branding visuals and commercial campaigns.",
+    "cover": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1600&q=85",
+    "description": "Clear, attractive images help your business stand out. We photograph products for catalogues and online stores, business portraits for your team and coverage of corporate events.\n\nFor brands and campaigns, we create visuals that match your identity and work across print, web and social media.",
+    "highlights": [
+      "Product catalogues",
+      "Business portraits",
+      "Corporate events",
+      "Branding visuals",
+      "Commercial campaigns"
+    ]
+  },
+  {
+    "id": "printing-frames",
+    "title": "Photo Printing & Custom Frames",
+    "short_name": "Prints & Frames",
+    "tagline": "Printed Memories",
+    "summary": "Photo lab prints, albums, canvas, metallic prints, custom frames, wall galleries and lamination.",
+    "cover": "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1600&q=85",
+    "description": "Turn your favourite photographs into something you can hold, display and pass down. Our printing team helps you choose the right size, paper and finish.\n\nWe offer photo lab prints, albums, canvas and metallic prints, custom frames, wall galleries and lamination.",
+    "highlights": [
+      "Photo lab prints",
+      "Albums",
+      "Canvas and metallic prints",
+      "Custom frames and wall galleries",
+      "Lamination"
+    ]
+  },
+  {
+    "id": "design-editing",
+    "title": "Design, Editing & Restoration",
+    "short_name": "Editing & Restoration",
+    "tagline": "Design & Finishing",
+    "summary": "Photo enhancement, restoration, colour correction, graphic design, invitation artwork and post-production.",
+    "cover": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=85",
+    "description": "Good photographs deserve careful finishing. We enhance and colour-correct images, restore old and damaged photos, and handle full post-production.\n\nOur designers also create invitation artwork and other graphic design for your events.",
+    "highlights": [
+      "Photo enhancement",
+      "Old photo restoration",
+      "Colour correction",
+      "Graphic design and invitation artwork",
+      "Post-production"
+    ]
+  },
+  {
+    "id": "gifts-printing",
+    "title": "Personalised Gifts & Printing",
+    "short_name": "Gifts & Printing",
+    "tagline": "Custom Products",
+    "summary": "Personalised mugs, sublimation rock prints, customised gifts, flex and large-format print enquiries.",
+    "cover": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1600&q=85",
+    "description": "A photo makes a gift personal. We print your images on mugs, sublimation rocks and a range of customised gifts.\n\nWe also take enquiries for flex and large-format printing for events and businesses.",
+    "highlights": [
+      "Personalised mugs",
+      "Sublimation rock prints",
+      "Customised gifts",
+      "Flex and large-format printing"
+    ]
+  }
+]

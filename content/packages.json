@@ -1,0 +1,72 @@
+[
+  {
+    "label": "Essential",
+    "name": "Basic",
+    "price": "रु. 30,000",
+    "summary": "For a simple and beautiful wedding coverage.",
+    "features": [
+      "Photography coverage",
+      "Edited digital photographs",
+      "Basic event documentation",
+      "Final delivery consultation"
+    ],
+    "featured": false,
+    "service": "wedding"
+  },
+  {
+    "label": "Classic",
+    "name": "Elite",
+    "price": "रु. 35,000",
+    "summary": "A little more coverage for your special day.",
+    "features": [
+      "Photography coverage",
+      "Edited digital photographs",
+      "Event highlights",
+      "Online delivery consultation"
+    ],
+    "featured": false,
+    "service": "wedding"
+  },
+  {
+    "label": "Signature",
+    "name": "Luxury",
+    "price": "रु. 45,000",
+    "summary": "Photography and film coverage for your celebration.",
+    "features": [
+      "Photography coverage",
+      "Video coverage",
+      "Edited digital photographs",
+      "Highlight film consultation"
+    ],
+    "featured": true,
+    "service": "wedding"
+  },
+  {
+    "label": "Premium",
+    "name": "Premium",
+    "price": "रु. 80,000",
+    "summary": "Extended coverage for multi-event celebrations.",
+    "features": [
+      "Extended photo and video coverage",
+      "Cinematic highlight film",
+      "Edited digital photographs",
+      "Album options available"
+    ],
+    "featured": false,
+    "service": "wedding"
+  },
+  {
+    "label": "Exclusive",
+    "name": "Diamond",
+    "price": "रु. 1,20,000",
+    "summary": "A premium experience for a bigger celebration.",
+    "features": [
+      "Custom photo and film coverage plan",
+      "Multi-event schedule consultation",
+      "Cinematic highlight film",
+      "Album and print options available"
+    ],
+    "featured": false,
+    "service": "wedding"
+  }
+]

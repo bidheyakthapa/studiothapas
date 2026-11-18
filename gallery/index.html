@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Studio Thapas</title>
+  <meta name="description" content="Browse the Studio Thapas photo gallery: weddings, portraits, newborn, graduation, products and more.">
+  <meta name="theme-color" content="#101010">
+  <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="gallery">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="siteHeader">
+  <a class="brand" href="/"><span class="brand-mark">ST</span><span>STUDIO <b>THAPAS</b><small>PHOTOGRAPHY • CINEMATOGRAPHY • PRINTING</small></span></a>
+  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav"><span></span><span></span><span></span></button>
+  <nav class="nav" id="siteNav" aria-label="Main">
+    <a href="/" data-section="home">Home</a><a href="/#services" data-section="services">Services</a><a href="/#weddings" data-section="weddings">Wedding</a><a href="/#packages" data-section="packages">Packages</a><a href="/gallery/" data-section="gallery">Gallery</a><a href="/#printing" data-section="printing">Printing</a><a href="/#contact" data-section="contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><b>Gallery</b></nav>
+  <p class="eyebrow">REAL STORIES · EVERY COLLECTION</p>
+  <h1>Our <em>gallery</em></h1>
+  <p>Browse our work by service. Click any photo to view it full screen and zoom in.</p>
+</section>
+
+<section class="section gallery-section gallery-page">
+  <div class="gallery-filters" id="galleryFilters" role="group" aria-label="Filter gallery by service"></div>
+  <div class="gallery-toolbar"><p id="galleryInfo" aria-live="polite"></p><a class="text-link" id="galleryServiceLink" href="#" hidden></a></div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+  <nav class="pagination" id="galleryPagination" aria-label="Gallery pages"></nav>
+</section>
+
+<section class="cta-band">
+  <div class="reveal"><p class="eyebrow dark">LIKE WHAT YOU SEE?</p><h2>Let's create <em>yours.</em></h2><p>Tell us about your event or session and we'll help you plan it.</p></div>
+  <div class="button-row reveal"><a class="btn ink" href="/#contact">Send an Enquiry</a><a class="btn ink-outline" href="/#packages">View Packages</a></div>
+</section>
+</main>
+
+<footer class="site-footer" id="siteFooter"></footer>
+<script src="/script.js"></script>
+</body>
+</html>

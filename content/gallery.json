@@ -1,14 +1,16 @@
 [
   {
     "title": "New",
-    "category": "Wedding",
+    "service": "wedding",
+    "date": "2026-11-17",
     "photos": [
       "https://picsum.photos/id/716/1920/1280.webp"
     ]
   },
   {
     "title": "Test",
-    "category": "Maternity",
+    "service": "newborn-maternity",
+    "date": "2026-11-17",
     "photos": [
       "/images/gallery/img_7887-83e7c56983fb.webp",
       "/images/gallery/img_7886-01a2e81c2231.webp",
