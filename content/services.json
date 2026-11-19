@@ -95,12 +95,12 @@
     ]
   },
   {
-    "id": "printing-frames",
     "title": "Photo Printing & Custom Frames",
+    "id": "printing-frames",
     "short_name": "Prints & Frames",
     "tagline": "Printed Memories",
     "summary": "Photo lab prints, albums, canvas, metallic prints, custom frames, wall galleries and lamination.",
-    "cover": "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1600&q=85",
+    "cover": "/images/gallery/ac0i4805_1-final-ccc-76d43e2f9e63.webp",
     "description": "Turn your favourite photographs into something you can hold, display and pass down. Our printing team helps you choose the right size, paper and finish.\n\nWe offer photo lab prints, albums, canvas and metallic prints, custom frames, wall galleries and lamination.",
     "highlights": [
       "Photo lab prints",
