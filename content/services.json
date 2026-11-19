@@ -111,12 +111,12 @@
     ]
   },
   {
-    "id": "design-editing",
     "title": "Design, Editing & Restoration",
+    "id": "design-editing",
     "short_name": "Editing & Restoration",
     "tagline": "Design & Finishing",
     "summary": "Photo enhancement, restoration, colour correction, graphic design, invitation artwork and post-production.",
-    "cover": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=85",
+    "cover": "/images/gallery/gemini_generated_image_c2j4nnc2j4nnc2j4-361bf8b18b4b.webp",
     "description": "Good photographs deserve careful finishing. We enhance and colour-correct images, restore old and damaged photos, and handle full post-production.\n\nOur designers also create invitation artwork and other graphic design for your events.",
     "highlights": [
       "Photo enhancement",
