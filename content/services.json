@@ -1,11 +1,11 @@
 [
   {
-    "id": "wedding",
     "title": "Wedding & Event Photography",
+    "id": "wedding",
     "short_name": "Wedding",
     "tagline": "Celebrations",
     "summary": "Traditional and candid wedding coverage, pre-wedding, engagement, mehendi, haldi, reception and family events.",
-    "cover": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85",
+    "cover": "/images/gallery/ac0i8590-ed8bd1f18650.webp",
     "description": "Your wedding is made of hundreds of small moments: the rituals, the laughter, the quiet glances and the people who travelled to be there. We photograph all of it, combining traditional coverage of every ceremony with candid storytelling that feels natural.\n\nFrom pre-wedding and engagement shoots to mehendi, haldi, the wedding day and the reception, we plan the coverage around your events so nothing important is missed.",
     "highlights": [
       "Traditional and candid wedding photography",
