@@ -63,12 +63,12 @@
     ]
   },
   {
-    "id": "graduation",
     "title": "Graduation & Institutional",
+    "id": "graduation",
     "short_name": "Graduation",
     "tagline": "Achievement",
     "summary": "Graduation portraits, group photos, Montessori graduation, school events and graduation framing packages.",
-    "cover": "https://images.unsplash.com/photo-1627556704283-452301a45fd0?auto=format&fit=crop&w=1600&q=85",
+    "cover": "/images/gallery/ac0i4656_1-8x12-1e187f375b25.webp",
     "description": "Graduation is a proud moment for students and families alike. We photograph individual graduation portraits, class and group photos, and the ceremony itself.\n\nWe also work with schools and institutions on Montessori graduations, school events and graduation framing packages.",
     "highlights": [
       "Graduation portraits",
