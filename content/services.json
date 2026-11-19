@@ -79,12 +79,12 @@
     ]
   },
   {
-    "id": "product-corporate",
     "title": "Product & Corporate Photography",
+    "id": "product-corporate",
     "short_name": "Product & Corporate",
     "tagline": "For Business",
     "summary": "Product catalogues, business portraits, corporate events, branding visuals and commercial campaigns.",
-    "cover": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1600&q=85",
+    "cover": "/images/gallery/ac0i5977-copy-ccccc-94a530f0d112.webp",
     "description": "Clear, attractive images help your business stand out. We photograph products for catalogues and online stores, business portraits for your team and coverage of corporate events.\n\nFor brands and campaigns, we create visuals that match your identity and work across print, web and social media.",
     "highlights": [
       "Product catalogues",
