@@ -47,12 +47,12 @@
     ]
   },
   {
-    "id": "family-portraits",
     "title": "Family, Couple & Portraits",
+    "id": "family-portraits",
     "short_name": "Family & Portraits",
     "tagline": "Together",
     "summary": "Family sessions, couple portraits, professional headshots, modeling portfolios and studio portraits.",
-    "cover": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1600&q=85",
+    "cover": "/images/gallery/16x24-1-34f17a5f703b.webp",
     "description": "Whether it is the whole family together, a couple celebrating a milestone or a portrait for your career, we help you feel at ease in front of the camera.\n\nChoose a studio session or an outdoor location for family portraits, couple photos, professional headshots and modeling portfolios.",
     "highlights": [
       "Family sessions",
