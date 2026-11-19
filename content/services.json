@@ -127,12 +127,12 @@
     ]
   },
   {
-    "id": "gifts-printing",
     "title": "Personalised Gifts & Printing",
+    "id": "gifts-printing",
     "short_name": "Gifts & Printing",
     "tagline": "Custom Products",
     "summary": "Personalised mugs, sublimation rock prints, customised gifts, flex and large-format print enquiries.",
-    "cover": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1600&q=85",
+    "cover": "/images/gallery/gemini_generated_image_c2j4nnc2j4nnc2j4-361bf8b18b4b.webp",
     "description": "A photo makes a gift personal. We print your images on mugs, sublimation rocks and a range of customised gifts.\n\nWe also take enquiries for flex and large-format printing for events and businesses.",
     "highlights": [
       "Personalised mugs",
